@@ -1,0 +1,179 @@
+/* Google Material Design 3 - Fixed Light Theme */
+:root {
+    --bg-color: #fcfdf7;
+    --surface-color: #ffffff;
+    --surface-variant: #f0f1ec;
+    --primary-color: #386a20; /* Благородный темно-зеленый Material акцент */
+    --secondary-color: #55624c;
+    --text-color: #1a1c18;
+    --text-muted: #43493e;
+    --border-color: #74796e;
+    --shadow: 0px 1px 3px rgba(0,0,0,0.05), 0px 1px 2px rgba(0,0,0,0.1);
+    --radius: 16px;
+    --transition: all 0.25s cubic-bezier(0.2, 0, 0, 1);
+
+    /* Цвета для кнопок главного экрана */
+    --hero-btn-bg: #e8f5e9;
+    --hero-btn-text: #1b5e20;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 90px 20px 40px 20px;
+}
+
+/* Навигация */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--surface-color);
+    border-bottom: 1px solid var(--surface-variant);
+    z-index: 1000;
+}
+.nav-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--primary-color);
+}
+.nav-controls {
+    display: flex;
+    gap: 12px;
+}
+
+/* Карточки */
+.card {
+    background-color: var(--surface-color);
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-bottom: 24px;
+    border: 1px solid var(--surface-variant);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.06);
+}
+
+/* Сетка интерфейса */
+.grid-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+}
+@media (max-width: 768px) {
+    .grid-layout { grid-template-columns: 1fr; gap: 0; }
+}
+
+
+.hero-title { font-size: 3.2rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -1px; color: var(--primary-color); }
+.hero-subtitle { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 28px; font-weight: 500; }
+.hero-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+
+/* Кнопки */
+.btn {
+    padding: 12px 26px;
+    border-radius: 100px;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition);
+    font-size: 0.95rem;
+}
+.hero-buttons .btn {
+    background-color: var(--hero-btn-bg);
+    color: var(--hero-btn-text);
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.1);
+}
+.hero-buttons .btn:hover {
+    filter: brightness(0.92);
+    transform: translateY(-1px);
+}
+.hero-buttons .btn-donation {
+    background-color: #ffdad6;
+    color: #410002;
+}
+
+/* Стандартные кнопки для остальных разделов */
+.btn-outline { var(--border-color); color: var(--text-color); background: transparent; }
+.btn-outline:hover { background: var(--surface-variant); }
+.btn-primary { background-color: var(--primary-color); color: var(--bg-color); }
+.btn-primary:hover { filter: brightness(1.1); }
+.btn-text { background: none; border: 1px solid var(--border-color); border-radius: 8px; font-weight: bold; cursor: pointer; color: var(--text-color); padding: 4px 12px; }
+
+/* Тэги технологий */
+.tech-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+.tag { background: var(--surface-variant); padding: 6px 14px; border-radius: 8px; font-size: 0.9rem; font-weight: 500; color: var(--text-color); }
+
+/* Списки и Оборудование */
+.interests-list { list-style: none; margin-top: 12px; }
+.interests-list li { margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+.hardware-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 16px;}
+.hw-item { background: var(--surface-variant); padding: 16px; border-radius: 12px; }
+.hw-item h3 { font-size: 1rem; margin-bottom: 8px; color: var(--primary-color); }
+
+/* Проекты */
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 16px;}
+.project-card { border: 1px solid var(--surface-variant); border-radius: 12px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between;}
+.project-card p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 16px; }
+
+/* Погода */
+.weather-card { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+.weather-main { display: flex; align-items: center; gap: 16px; font-size: 2.2rem; font-weight: bold; margin: 12px 0; }
+#weather-icon { color: var(--primary-color); }
+.weather-details { display: flex; gap: 20px; font-size: 0.9rem; color: var(--text-muted); margin-top: 8px; }
+
+/* Донаты */
+.donate-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 16px;}
+.donate-item { background: var(--surface-variant); padding: 20px; border-radius: 12px; }
+.crypto-address { display: flex; gap: 8px; margin: 12px 0; }
+.crypto-address input { flex: 1; padding: 8px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--surface-color); color: var(--text-color); font-family: monospace; font-size: 0.85rem;}
+.btn-icon-copy { background: var(--primary-color); color: var(--bg-color); border: none; padding: 8px 12px; border-radius: 8px; cursor: pointer; }
+.qr-code { width: 120px; height: 120px; margin-top: 10px; border-radius: 8px; border: 4px solid white; }
+
+/* Ссылки футера */
+.links-footer { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin: 20px 0; }
+.links-footer a { color: var(--text-color); text-decoration: none; font-weight: 500; font-size: 1.1rem; }
+.links-footer a:hover { color: var(--primary-color); }
+.ref-block { margin-top: 24px; padding-top: 16px; border-top: 1px dashed var(--border-color); }
+
+.footer { text-align: center; padding: 24px; font-size: 0.9rem; color: var(--text-muted); }
+.footer a { color: var(--primary-color); text-decoration: none; }
+
+/* Стили для страницы политики */
+.legal-text h2 { font-size: 1.4rem; margin-top: 24px; margin-bottom: 10px; color: var(--primary-color); }
+.legal-text h3 { font-size: 1.1rem; margin-top: 16px; margin-bottom: 6px; }
+.legal-text p, .legal-text ul { margin-bottom: 14px; font-size: 0.95rem; color: var(--text-muted); text-align: justify; }
+.legal-text ul { padding-left: 20px; }
+
+.hidden { display: none !important; }
+.text-center { text-align: center; }
