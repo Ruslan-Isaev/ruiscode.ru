@@ -1,0 +1,43 @@
+{
+  "messages": {
+    "meta": {"title": "RUIS — Python Developer", "description": "RUIS — Python developer, Linux enthusiast and open source contributor."},
+    "language": {"switchLabel": "Switch language"},
+    "nav": {"about": "About", "stack": "Stack", "projects": "Projects", "contact": "Contact"},
+    "hero": {"available": "OPEN TO INTERESTING PROJECTS", "hello": "Hi, I'm", "subtitle": "Python developer. I build useful tools, automate repetitive work, and explore Linux infrastructure.", "cta": "Explore projects", "contact": "Get in touch", "location": "Working worldwide"},
+    "about": {"heading": "A little about me", "copy": "I'm a developer who enjoys turning complex problems into simple, reliable solutions. I write Python, run services on Linux, and share what I build with the open source community."},
+    "stack": {"heading": "Tools I work with"},
+    "projects": {"heading": "Selected projects", "note": "FEATURED WORK", "open": "Open project"},
+    "hardware": {"heading": "My setup"},
+    "contact": {"kicker": "HAVE AN IDEA OR A PROJECT?", "heading": "Let's talk.", "copy": "Open to interesting projects, collaboration, and good technical conversations.", "cta": "Send me a message"},
+    "footer": {"rights": "Made with love."}
+  },
+  "content": {
+    "links": [
+      {"id": "telegram", "label": "Telegram", "url": "https://t.me/ruiscode", "external": true},
+      {"id": "github", "label": "GitHub", "url": "https://github.com/Ruslan-Isaev", "external": true},
+      {"id": "reddit", "label": "Reddit", "url": "https://www.reddit.com/u/ruslan-isaev/s/MnfXbXaHFV", "external": true},
+      {"id": "email", "label": "Email", "url": "mailto:inbox@ruiscode.ru", "external": false},
+      {"id": "donations", "label": "Donate me", "url": "https://dalink.to/ruisvip", "external": true}
+    ],
+    "facts": [
+      {"value": "Python", "label": "Primary language"},
+      {"value": "Linux", "label": "Daily environment"},
+      {"value": "Open source", "label": "Code philosophy"},
+      {"value": "Always", "label": "Learning something"}
+    ],
+    "stack": [
+      {"icon": "Py", "name": "Python", "type": "LANGUAGE"}, {"icon": "Ai", "name": "Aiogram", "type": "TELEGRAM"},
+      {"icon": "Fa", "name": "FastAPI", "type": "BACKEND"}, {"icon": "$", "name": "Bash", "type": "AUTOMATION"},
+      {"icon": "⌘", "name": "Linux", "type": "SYSTEMS"}, {"icon": "D", "name": "Docker", "type": "CONTAINERS"},
+      {"icon": "Git", "name": "Git", "type": "VERSION CONTROL"}, {"icon": "S3", "name": "S3", "type": "STORAGE"}
+    ],
+    "projects": [
+      {"name": "NeoS3Files", "description": "A high-level async Python library for working with S3-compatible storage.", "tags": ["Python", "Async", "S3"], "url": "https://github.com/NeosartOrg/NeoS3Files"}
+    ],
+    "hardware": [
+      {"label": "01 / WORKSTATION", "value": "Intel Xeon E5-2420<br>16 GB RAM · NVIDIA RTX 3050"},
+      {"label": "02 / SYSTEMS", "value": "CachyOS Linux<br>Windows 11"},
+      {"label": "03 / MOBILE", "value": "Tecno Spark 20 Pro"}
+    ]
+  }
+}

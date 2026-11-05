@@ -1,161 +1,85 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RUIS | Python Developer & Linux Enthusiast</title>
-    <meta name="description" content="Личный сайт-визитка и портфолио разработчика RUIS. Python, Linux, Open Source.">
-
-    <meta property="og:title" content="RUIS | Portfolio">
-    <meta property="og:description" content="Python Developer / Linux enthusiast / Open Source lover">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ruiscode.ru">
-
-    <link rel="icon" href="https://img.icons8.com/material-rounded/96/3498db/code.png" type="image/png">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080a0e">
+  <meta name="description" content="RUIS — Python developer, Linux enthusiast and open source contributor.">
+  <title>RUIS — Python Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
-<body class="light-theme">
-
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">RUIS</a>
-            <div class="nav-controls">
-                <button id="lang-toggle" class="btn-text">EN</button>
-            </div>
-        </div>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="RUIS home"><span class="brand-mark">R</span><span>RUIS<span class="brand-dot">.</span></span></a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#about" data-i18n="nav.about">Обо мне</a>
+      <a href="#stack" data-i18n="nav.stack">Стек</a>
+      <a href="#projects" data-i18n="nav.projects">Проекты</a>
+      <a href="#contact" data-i18n="nav.contact">Контакты</a>
     </nav>
+    <button class="language-switch" id="lang-switch" type="button" aria-label="Switch language">EN <span>↗</span></button>
+  </header>
 
-    <main class="container">
-        <section class="card">
-            <center><h1 class="hero-title">RUIS</h1></center>
-            <p class="hero-subtitle" data-i18n="hero-desc">Python Developer / Linux enthusiast / Open Source lover</p>
-            <div class="hero-buttons">
-                <a href="https://t.me/ruiscode" target="_blank" class="btn btn-primary"><i class="fab fa-telegram"></i> Telegram</a>
-                <a href="https://github.com/Ruslan-Isaev" target="_blank" class="btn btn-secondary"><i class="fab fa-github"></i> GitHub</a>
-                <a href="mailto:inbox@ruiscode.ru" class="btn btn-outline"><i class="fas fa-envelope"></i> Email</a>
-                <a href="#donations" class="btn btn-donation"><i class="fas fa-heart"></i> Support</a>
-            </div>
-        </section>
-
-        <div class="grid-layout">
-            <section class="card">
-                <h2 data-i18n="about-title">Обо мне</h2>
-                <p data-i18n="about-text">Привет! Я Python-разработчик, специализируюсь на создании бэкенд-решений, автоматизации процессов и работе с серверной инфраструктурой.</p>
-                <h3>Интересы:</h3>
-                <ul class="interests-list">
-                    <li><i class="fab fa-python"></i> Python</li>
-                    <li><i class="fab fa-linux"></i> Linux</li>
-                    <li><i class="fas fa-terminal"></i> Bash & Scripting</li>
-                    <li><i class="fas fa-server"></i> Серверы & Хостинг</li>
-                    <li><i class="fas fa-code-branch"></i> Open Source</li>
-                    <li><i class="fas fa-shield-alt"></i> Информационная безопасность</li>
-                </ul>
-            </section>
-
-            <section class="card weather-card">
-                <h2 data-i18n="weather-title">Погода в Москве</h2>
-                <div id="weather-loading" class="loading" data-i18n="loading">Загрузка...</div>
-                <div id="weather-content" class="hidden">
-                    <div class="weather-main">
-                        <i id="weather-icon" class="fas fa-cloud-sun"></i>
-                        <span id="weather-temp">--°C</span>
-                    </div>
-                    <p id="weather-desc">--</p>
-                    <div class="weather-details">
-                        <div><i class="fas fa-wind"></i> <span id="weather-wind">-- м/с</span></div>
-                        <div><i class="fas fa-tint"></i> <span id="weather-humidity">--%</span></div>
-                    </div>
-                </div>
-            </section>
+  <main id="top">
+    <section class="hero wrap">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot"></span><span data-i18n="hero.available">ОТКРЫТ ДЛЯ ИНТЕРЕСНЫХ ПРОЕКТОВ</span></p>
+        <h1><span data-i18n="hero.hello">Привет, я</span><br><span class="accent">RUIS<span class="cursor">_</span></span></h1>
+        <p class="hero-lead" data-i18n="hero.subtitle">Python-разработчик. Создаю полезные инструменты, автоматизирую рутину и исследую Linux-инфраструктуру.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#projects"><span data-i18n="hero.cta">Смотреть проекты</span><span aria-hidden="true">↘</span></a>
+          <a class="button button-quiet" id="hero-contact" href="mailto:inbox@ruiscode.ru"><span data-i18n="hero.contact">Связаться</span><span aria-hidden="true">↗</span></a>
         </div>
+        <div class="hero-meta"><span class="mono">55°45' N · 37°37' E</span><span class="meta-line"></span><span data-i18n="hero.location">Работаю по всему миру</span></div>
+      </div>
+      <div class="hero-art" aria-label="Abstract terminal illustration">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div>
+        <div class="core"><span class="core-bracket">{</span><span class="core-text">py</span><span class="core-bracket">}</span></div>
+        <span class="orbit-label label-top mono">SYS / ONLINE</span><span class="orbit-label label-bottom mono">BUILDING IN PUBLIC</span>
+        <span class="orbit-chip chip-a mono">01</span><span class="orbit-chip chip-b mono">~/dev</span>
+      </div>
+      <a class="scroll-cue mono" href="#about"><span>SCROLL TO EXPLORE</span><span class="scroll-line"></span></a>
+    </section>
 
-        <section class="card">
-            <h2 data-i18n="tech-title">Технологический стек</h2>
-            <div class="tech-tags">
-                <span class="tag"><i class="fab fa-python"></i> Python</span>
-                <span class="tag"><i class="fab fa-linux"></i> Linux</span>
-                <span class="tag"><i class="fas fa-terminal"></i> Bash</span>
-                <span class="tag"><i class="fab fa-git-alt"></i> Git</span>
-                <span class="tag"><i class="fas fa-robot"></i> Aiogram</span>
-                <span class="tag"><i class="fas fa-bolt"></i> FastAPI</span>
-                <span class="tag"><i class="fab fa-docker"></i> Docker</span>
-            </div>
-        </section>
+    <section class="section wrap" id="about">
+      <div class="section-heading"><span class="section-index mono">01 /</span><h2 data-i18n="about.heading">Немного обо мне</h2></div>
+      <div class="about-grid">
+        <p class="about-copy" data-i18n="about.copy">Я разработчик, которому нравится превращать сложные задачи в простые и надёжные решения. Пишу на Python, разворачиваю сервисы на Linux и делюсь тем, что создаю, с open source сообществом.</p>
+        <div class="about-facts" id="facts"></div>
+      </div>
+    </section>
 
-        <section class="card">
-            <h2 data-i18n="hardware-title">Железо и Девайсы</h2>
-            <div class="hardware-grid">
-                <div class="hw-item">
-                    <h3><i class="fas fa-mobile-alt"></i> Смартфон</h3>
-                    <p>Tecno Spark 20 Pro</p>
-                </div>
-                <div class="hw-item">
-                    <h3><i class="fas fa-desktop"></i> Рабочий ПК</h3>
-                    <p><strong>CPU:</strong> Intel Xeon E5-2420</p>
-                    <p><strong>RAM:</strong> 16 GB</p>
-                    <p><strong>GPU:</strong> NVIDIA RTX 3050</p>
-                </div>
-                <div class="hw-item">
-                    <h3><i class="fas fa-compact-disc"></i> Операционные системы</h3>
-                    <p><i class="fab fa-linux"></i> CachyOS (Linux) / <i class="fab fa-windows"></i> Windows 11</p>
-                </div>
-            </div>
-        </section>
+    <section class="section wrap" id="stack">
+      <div class="section-heading"><span class="section-index mono">02 /</span><h2 data-i18n="stack.heading">Инструменты в работе</h2></div>
+      <div class="stack-grid" id="stack-grid"></div>
+    </section>
 
-        <section class="card">
-            <h2 data-i18n="projects-title">Проекты</h2>
-            <div id="projects-container" class="projects-grid">
-                </div>
-        </section>
+    <section class="section wrap" id="projects">
+      <div class="section-heading section-heading-between"><div><span class="section-index mono">03 /</span><h2 data-i18n="projects.heading">Избранные проекты</h2></div><span class="mono small-note" data-i18n="projects.note">ВЫБРАННЫЕ РАБОТЫ</span></div>
+      <div class="projects-grid" id="projects-grid"></div>
+    </section>
 
-        <section id="donations" class="card">
-            <h2 data-i18n="donate-title">Поддержать проект</h2>
-            <div class="donate-grid">
-                <div class="donate-item">
-                    <h3><i class="fas fa-credit-card"></i> Банковская карта</h3>
-                    <p data-i18n="card-desc">Перевод по номеру карты</p>
-                    <div class="crypto-address">
-                        <input type="text" value="2200 7009 9450 5054" readonly id="card-num">
-                        <button onclick="copyText('card-num')" class="btn-icon-copy"><i class="fas fa-copy"></i></button>
-                    </div>
-                </div>
-                <div class="donate-item">
-                    <h3><i class="fab fa-ethereum"></i> USDT (TRC-20)</h3>
-                    <div class="crypto-address">
-                        <input type="text" value="TYcwBbDSmPuGbSNozBB3WdSmQaRnuhuAaS" readonly id="usdt-addr">
-                        <button onclick="copyText('usdt-addr')" class="btn-icon-copy"><i class="fas fa-copy"></i></button>
-                    </div>
-                    <img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=TYcwBbDSmPuGbSNozBB3WdSmQaRnuhuAaS" alt="USDT QR">
-                </div>
-            </div>
-        </section>
+    <section class="section wrap two-col-section">
+      <div class="section-heading"><span class="section-index mono">04 /</span><h2 data-i18n="hardware.heading">Моё железо</h2></div>
+      <div class="hardware-grid" id="hardware-grid"></div>
+    </section>
 
-        <section class="card text-center">
-            <h2 data-i18n="links-title">Контакты и ссылки</h2>
-            <div class="links-footer">
-                <a href="https://t.me/ruiscode" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
-                <a href="https://github.com/Ruslan-Isaev" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                <a href="https://www.reddit.com/u/ruslan-isaev/s/MnfXbXaHFV" target="_blank"><i class="fab fa-reddit"></i> Reddit</a>
-                <a href="mailto:inbox@ruiscode.ru"><i class="fas fa-envelope"></i> Email</a>
-                <a href="https://www.donationalerts.com/r/ruisvip" target="_blank"><i class="fas fa-heartbeat"></i> DonationAlerts</a>
-            </div>
-            <div class="ref-block">
-                <p data-i18n="ref-text">Надежный хостинг для ваших проектов:</p>
-                <a href="https://beget.com/p2138038" target="_blank" class="btn btn-outline" style="display:inline-block; margin-top:10px;">Beget</a>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <p>&copy; 2026 RUIS. All rights reserved. | <a href="privacy.html" data-i18n="privacy-link">Политика конфиденциальности</a></p>
-    </footer>
-
-    <script src="script.js"></script>
+    <section class="contact-section" id="contact">
+      <div class="wrap contact-inner">
+        <div><p class="eyebrow mono" data-i18n="contact.kicker">ЕСТЬ ИДЕЯ ИЛИ ПРЕДЛОЖЕНИЕ?</p><h2 data-i18n="contact.heading">Давайте обсудим.</h2></div>
+        <div class="contact-right"><p data-i18n="contact.copy">Открыт к интересным проектам, сотрудничеству и хорошим техническим разговорам.</p><a class="button button-primary" id="contact-email" href="mailto:inbox@ruiscode.ru"><span data-i18n="contact.cta">Написать мне</span><span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer wrap">
+    <a class="brand footer-brand" href="#top"><span class="brand-mark">R</span><span>RUIS<span class="brand-dot">.</span></span></a>
+    <div class="footer-links" id="social-links"></div>
+    <p class="mono copyright">© <span id="year"></span> RUIS. <span data-i18n="footer.rights">Сделано с любопытством.</span></p>
+  </footer>
 </body>
 </html>

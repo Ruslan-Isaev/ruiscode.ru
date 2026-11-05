@@ -1,0 +1,43 @@
+{
+  "messages": {
+    "meta": {"title": "RUIS — Python-разработчик", "description": "RUIS — Python-разработчик, энтузиаст Linux и участник open source."},
+    "language": {"switchLabel": "Переключить язык"},
+    "nav": {"about": "Обо мне", "stack": "Стек", "projects": "Проекты", "contact": "Контакты"},
+    "hero": {"available": "ОТКРЫТ ДЛЯ ИНТЕРЕСНЫХ ПРОЕКТОВ", "hello": "Привет, я", "subtitle": "Python-разработчик. Создаю полезные инструменты, автоматизирую рутину и исследую Linux-инфраструктуру.", "cta": "Смотреть проекты", "contact": "Связаться", "location": "Работаю по всему миру"},
+    "about": {"heading": "Немного обо мне", "copy": "Я разработчик, которому нравится превращать сложные задачи в простые и надёжные решения. Пишу на Python, разворачиваю сервисы на Linux и делюсь тем, что создаю, с open source сообществом."},
+    "stack": {"heading": "Инструменты в работе"},
+    "projects": {"heading": "Избранные проекты", "note": "ВЫБРАННЫЕ РАБОТЫ", "open": "Открыть проект"},
+    "hardware": {"heading": "Моё железо"},
+    "contact": {"kicker": "ЕСТЬ ИДЕЯ ИЛИ ПРЕДЛОЖЕНИЕ?", "heading": "Давайте обсудим.", "copy": "Открыт к интересным проектам, сотрудничеству и хорошим техническим разговорам.", "cta": "Написать мне"},
+    "footer": {"rights": "Сделано с любовью."}
+  },
+  "content": {
+    "links": [
+      {"id": "telegram", "label": "Telegram", "url": "https://t.me/ruiscode", "external": true},
+      {"id": "github", "label": "GitHub", "url": "https://github.com/Ruslan-Isaev", "external": true},
+      {"id": "reddit", "label": "Reddit", "url": "https://www.reddit.com/u/ruslan-isaev/s/MnfXbXaHFV", "external": true},
+      {"id": "email", "label": "Email", "url": "mailto:inbox@ruiscode.ru", "external": false},
+      {"id": "donations", "label": "Донат", "url": "https://finance.ozon.ru/apps/sbp/ozonbankpay/01a1abb7-0090-7cc3-baea-539e5b65779f", "external": true}
+    ],
+    "facts": [
+      {"value": "Python", "label": "Основной язык"},
+      {"value": "Linux", "label": "Среда разработки"},
+      {"value": "Open source", "label": "Подход к коду"},
+      {"value": "Всегда", "label": "Учусь новому"}
+    ],
+    "stack": [
+      {"icon": "Py", "name": "Python", "type": "LANGUAGE"}, {"icon": "Ai", "name": "Aiogram", "type": "TELEGRAM"},
+      {"icon": "Fa", "name": "FastAPI", "type": "BACKEND"}, {"icon": "$", "name": "Bash", "type": "AUTOMATION"},
+      {"icon": "⌘", "name": "Linux", "type": "SYSTEMS"}, {"icon": "D", "name": "Docker", "type": "CONTAINERS"},
+      {"icon": "Git", "name": "Git", "type": "VERSION CONTROL"}, {"icon": "S3", "name": "S3", "type": "STORAGE"}
+    ],
+    "projects": [
+      {"name": "NeoS3Files", "description": "Высокоуровневая асинхронная Python-библиотека для работы с S3-совместимыми хранилищами.", "tags": ["Python", "Async", "S3"], "url": "https://github.com/NeosartOrg/NeoS3Files"}
+    ],
+    "hardware": [
+      {"label": "01 / WORKSTATION", "value": "Intel Xeon E5-2420<br>16 GB RAM · NVIDIA RTX 3050"},
+      {"label": "02 / SYSTEMS", "value": "CachyOS Linux<br>Windows 11"},
+      {"label": "03 / MOBILE", "value": "Tecno Spark 20 Pro"}
+    ]
+  }
+}

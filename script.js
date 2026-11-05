@@ -1,163 +1,71 @@
-// 1. ЛОКАЛИЗАЦИЯ И ПЕРЕВОДЫ
-const translations = {
-    ru: {
-        "hero-desc": "Python Developer / Linux enthusiast / Open Source lover",
-        "about-title": "Обо мне",
-        "about-text": "Привет! Я Python-разработчик, специализируюсь на создании высокопроизводительных серверных приложений, автоматизации инфраструктуры и Telegram-ботов. Люблю Open Source и ОС Linux.",
-        "weather-title": "Погода в Москве",
-        "loading": "Загрузка...",
-        "tech-title": "Технологический стек",
-        "hardware-title": "Железо и Девайсы",
-        "projects-title": "Проекты",
-        "donate-title": "Поддержать проект",
-        "card-desc": "Перевод по номеру карты",
-        "links-title": "Контакты и ссылки",
-        "ref-text": "Надежный хостинг для ваших проектов:",
-        "privacy-link": "Политика конфиденциальности",
-        "view-project": "Открыть проект"
-    },
-    en: {
-        "hero-desc": "Python Developer / Linux enthusiast / Open Source lover",
-        "about-title": "About Me",
-        "about-text": "Hello! I am a Python developer specializing in building high-performance backend solutions, automating Linux infrastructures, and building Telegram bots. Open Source lover.",
-        "weather-title": "Weather in Moscow",
-        "loading": "Loading...",
-        "tech-title": "Tech Stack",
-        "hardware-title": "Hardware & Devices",
-        "projects-title": "Projects",
-        "donate-title": "Support the Project",
-        "card-desc": "Transfer via Card number (only ru-cards)",
-        "links-title": "Contacts & Links",
-        "ref-text": "Reliable hosting for your projects:",
-        "privacy-link": "Privacy Policy",
-        "view-project": "View Project"
-    }
-};
+const LANGS = ['ru', 'en'];
+const DEFAULT_LANG = 'ru';
+let currentLang = DEFAULT_LANG;
+let messages = {};
+let content = {};
 
-// 2. ДАННЫЕ ПРОЕКТОВ
-const projectsData = [
-    {
-        title: "NeoS3Files",
-        desc_ru: "Высокоуровневая асинхронная Python-библиотека для работы с S3-совместимыми хранилищами.",
-        desc_en: "A high-level async Python library for working with S3-compatible storage.",
-        tech: ["Python", "S3"],
-        link: "https://github.com/NeosartOrg/NeoS3Files"
-    }
-];
-
-let currentLang = 'ru';
-
-function initLanguage() {
-    const savedLang = localStorage.getItem('lang');
-    if (savedLang) {
-        currentLang = savedLang;
-    } else {
-        const browserLang = navigator.language || navigator.userLanguage;
-        const ruLanguages = ['ru', 'be', 'uk'];
-        const baseLang = browserLang.substring(0, 2).toLowerCase();
-        currentLang = ruLanguages.includes(baseLang) ? 'ru' : 'en';
-    }
-    updateLanguageDOM();
+function getInitialLanguage() {
+  const stored = localStorage.getItem('ruis-language');
+  if (LANGS.includes(stored)) return stored;
+  const browser = (navigator.language || 'ru').slice(0, 2).toLowerCase();
+  return LANGS.includes(browser) ? browser : DEFAULT_LANG;
 }
 
-function toggleLanguage() {
-    currentLang = currentLang === 'ru' ? 'en' : 'ru';
-    localStorage.setItem('lang', currentLang);
-    updateLanguageDOM();
-    renderProjects();
+function getPath(object, path) {
+  return path.split('.').reduce((value, key) => value?.[key], object);
 }
 
-function updateLanguageDOM() {
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (translations[currentLang][key]) {
-            el.textContent = translations[currentLang][key];
-        }
-    });
-    document.getElementById('lang-toggle').textContent = currentLang.toUpperCase();
-    document.documentElement.lang = currentLang;
+function applyMessages() {
+  document.documentElement.lang = currentLang;
+  document.querySelectorAll('[data-i18n]').forEach((element) => {
+    const value = getPath(messages, element.dataset.i18n);
+    if (typeof value === 'string') element.textContent = value;
+  });
+  const button = document.getElementById('lang-switch');
+  button.innerHTML = `${currentLang === 'ru' ? 'EN' : 'RU'} <span>↗</span>`;
+  button.setAttribute('aria-label', messages.language.switchLabel);
+  document.title = messages.meta.title;
+  document.querySelector('meta[name="description"]').content = messages.meta.description;
+  renderContent();
 }
 
-function renderProjects() {
-    const container = document.getElementById('projects-container');
-    if(!container) return;
-    container.innerHTML = '';
-    
-    projectsData.forEach(proj => {
-        const desc = currentLang === 'ru' ? proj.desc_ru : proj.desc_en;
-        const tagsHtml = proj.tech.map(t => `<span class="tag">${t}</span>`).join('');
-        
-        const card = document.createElement('div');
-        card.className = 'project-card';
-        card.innerHTML = `
-            <div>
-                <h3>${proj.title}</h3>
-                <p>${desc}</p>
-                <div class="tech-tags">${tagsHtml}</div>
-            </div>
-            <a href="${proj.link}" target="_blank" class="btn btn-outline" style="margin-top:15px; text-align:center; justify-content:center;">
-                <i class="fab fa-github"></i> ${translations[currentLang]['view-project']}
-            </a>
-        `;
-        container.appendChild(card);
-    });
+function renderContent() {
+  const { facts, stack, projects, hardware, links } = content;
+  document.getElementById('facts').innerHTML = facts.map((item) => `
+    <div class="fact"><span class="fact-value">${item.value}</span><span class="fact-label">${item.label}</span></div>`).join('');
+  document.getElementById('stack-grid').innerHTML = stack.map((item) => `
+    <div class="stack-item"><span class="stack-icon">${item.icon}</span><span><span class="stack-name">${item.name}</span><span class="stack-type">${item.type}</span></span></div>`).join('');
+  document.getElementById('projects-grid').innerHTML = projects.map((project, index) => `
+    <article class="project-card"><div><div class="project-top"><span class="project-number">0${index + 1} / PROJECT</span><a class="project-link" href="${project.url}" target="_blank" rel="noreferrer" aria-label="${messages.projects.open} ${project.name}">↗</a></div><h3>${project.name}</h3><p>${project.description}</p></div><div class="project-tags">${project.tags.map((tag) => `<span>${tag}</span>`).join('')}</div></article>`).join('');
+  document.getElementById('hardware-grid').innerHTML = hardware.map((item) => `
+    <article class="hardware-card"><h3>${item.label}</h3><p>${item.value}</p></article>`).join('');
+  document.getElementById('social-links').innerHTML = links.map((link) => `
+    <a href="${link.url}" ${link.external ? 'target="_blank" rel="noreferrer"' : ''}>${link.label} ↗</a>`).join('');
+  document.getElementById('hero-contact').href = content.links.find((link) => link.id === 'email')?.url || 'mailto:inbox@ruiscode.ru';
+  document.getElementById('contact-email').href = document.getElementById('hero-contact').href;
 }
 
-// 3. API ПОГОДЫ
-async function fetchWeather() {
-    const loadingEl = document.getElementById('weather-loading');
-    const contentEl = document.getElementById('weather-content');
-    const url = 'https://api.open-meteo.com/v1/forecast?latitude=55.7512&longitude=37.6184&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m';
-    
-    try {
-        const response = await fetch(url);
-        if (!response.ok) throw new Error('Network error');
-        const data = await response.json();
-        
-        const current = data.current;
-        document.getElementById('weather-temp').textContent = `${Math.round(current.temperature_2m)}°C`;
-        document.getElementById('weather-wind').textContent = `${current.wind_speed_10m} m/s`;
-        document.getElementById('weather-humidity').textContent = `${current.relative_humidity_2m}%`;
-        
-        const code = current.weather_code;
-        const weatherMap = {
-            0: {ru: 'Ясно', en: 'Clear sky', icon: 'fa-sun'},
-            1: {ru: 'Преимущественно ясно', en: 'Mainly clear', icon: 'fa-cloud-sun'},
-            2: {ru: 'Переменная облачность', en: 'Partly cloudy', icon: 'fa-cloud-sun'},
-            3: {ru: 'Пасмурно', en: 'Overcast', icon: 'fa-cloud'},
-            45: {ru: 'Туман', en: 'Fog', icon: 'fa-smog'},
-            61: {ru: 'Небольшой дождь', en: 'Slight rain', icon: 'fa-cloud-showers-heavy'},
-            71: {ru: 'Снегопад', en: 'Snow fall', icon: 'fa-snowflake'}
-        };
-        
-        const info = weatherMap[code] || {ru: 'Переменчиво', en: 'Variable', icon: 'fa-cloud-sun'};
-        document.getElementById('weather-desc').textContent = currentLang === 'ru' ? info.ru : info.en;
-        document.getElementById('weather-icon').className = `fas ${info.icon}`;
-        
-        if (loadingEl) loadingEl.classList.add('hidden');
-        if (contentEl) contentEl.classList.remove('hidden');
-    } catch (err) {
-        if(loadingEl) loadingEl.textContent = 'Weather error';
-        console.error('Weather error:', err);
-    }
+async function setLanguage(language) {
+  currentLang = language;
+  localStorage.setItem('ruis-language', currentLang);
+  const response = await fetch(`content/${currentLang}.json`);
+  if (!response.ok) throw new Error(`Language file returned ${response.status}`);
+  const data = await response.json();
+  // Translation strings and editable page content live in the same language file.
+  messages = data.messages;
+  content = data.content;
+  applyMessages();
 }
 
-function copyText(id) {
-    const input = document.getElementById(id);
-    input.select();
-    input.setSelectionRange(0, 99999);
-    navigator.clipboard.writeText(input.value);
-    
-    const btn = input.nextElementSibling;
-    const origIcon = btn.innerHTML;
-    btn.innerHTML = '<i class="fas fa-check"></i>';
-    setTimeout(() => btn.innerHTML = origIcon, 2000);
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    initLanguage();
-    renderProjects();
-    fetchWeather();
-    
-    document.getElementById('lang-toggle').addEventListener('click', toggleLanguage);
+document.addEventListener('DOMContentLoaded', async () => {
+  document.getElementById('year').textContent = new Date().getFullYear();
+  document.getElementById('lang-switch').addEventListener('click', () => {
+    setLanguage(currentLang === 'ru' ? 'en' : 'ru');
+  });
+  try {
+    await setLanguage(getInitialLanguage());
+  } catch (error) {
+    console.error('Unable to load site language file:', error);
+    document.getElementById('projects-grid').innerHTML = '<p class="empty">Content could not be loaded. Open the site through a local web server.</p>';
+  }
 });
